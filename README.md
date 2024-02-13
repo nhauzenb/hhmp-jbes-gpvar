@@ -1,4 +1,4 @@
-Code package for Hauzenberger, N., F. Huber, M. Marcellino & N. Petz (202x). Gaussian process vector autoregressions and macroeconomic uncertainty, *Journal of Business & Economic Statistics*, just accepted.
+# Code package for Hauzenberger, N., F. Huber, M. Marcellino & N. Petz (202x). Gaussian process vector autoregressions and macroeconomic uncertainty, *Journal of Business & Economic Statistics*, just accepted.
 
 **Publication (open access).** link following soon
 
