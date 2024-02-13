@@ -1,7 +1,7 @@
 Code package for Hauzenberger, N., F. Huber, M. Marcellino & N. Petz (202x). Gaussian process vector autoregressions and macroeconomic uncertainty, *Journal of Business & Economic Statistics*, just accepted.
 
 **Publication (open access):** following soon
-([**Working paper.**]https://arxiv.org/pdf/2112.01995.pdf)
+[**Working paper.**](https://arxiv.org/pdf/2112.01995.pdf)
 
 ### Data. 
 For the forecast exercise, we use the popular FRED-QD dataset provided by the [*Federal Reserve Bank of St. Louis*](https://research.stlouisfed.org/econ/mccracken/fred-databases/). We provide the data as a .rda file [`fred QD`](./fred_data/fred_QD.rda) with 30 columns of the *"Xraw.stat"* object referring to the different variables. This quarterly sample spans from 1965Q1 to 2019Q4. We deliberately exclude the Covid-19 period and focus exclusively on pre-pandemic data. The data is transformed to stationarity, following the suggestions of McCracken and Ng (2020). Table 1 in Sub-section 4.1 of the book chapter shows the set of variables included for different model sizes.
