@@ -6,10 +6,13 @@ Code package for Hauzenberger, N., F. Huber, M. Marcellino & N. Petz (202x). Gau
 
 [**Online Appendix.**](https://www.dropbox.com/scl/fi/w6o64l6k9wpyjjf9y1u5d/HHMP_JBES_GPVAR-appendix.pdf?rlkey=yfrj506lojz11q93yci68k26c&dl=0)
 
+## The macroeconomic effects of uncertainty.
 
+### Data for Monte Carlo exercise.
+For the Monte Carlo exercise, we use the dynamic stochastic general equilibrium (DSGE) model proposed in [Basu & Bundick (2017, ECTA)](https://doi.org/10.3982/ECTA13960) to simulate time series of length T=120 and use these to back out the responses of the model economy to unexpected shocks in uncertainty. The observed variables are output (GDP), consumption (CONS), investment (INV), hours worked (HWORK), inflation, M2 money stock, and the implied stock market volatility (VXO). The uncertainty shock is identified by ordering the stock market volatility (our measure of uncertainty) first, implying an immediate reaction of all real economic quantities in the system following an uncertainty shock. This identification scheme is fully supported by the Basu & Bundick (2017) DSGE model. 
 
-### Data. 
-For the forecast exercise, we use the popular FRED-QD dataset provided by the [*Federal Reserve Bank of St. Louis*](https://research.stlouisfed.org/econ/mccracken/fred-databases/). We provide the data as a .rda file [`fred QD`](./fred_data/fred_QD.rda) with 30 columns of the *"Xraw.stat"* object referring to the different variables. This quarterly sample spans from 1965Q1 to 2019Q4. We deliberately exclude the Covid-19 period and focus exclusively on pre-pandemic data. The data is transformed to stationarity, following the suggestions of McCracken and Ng (2020). Table 1 in Sub-section 4.1 of the book chapter shows the set of variables included for different model sizes.
+### Data for the empirical application. 
+For the empirical application, we use the popular FRED-QD dataset provided by the [*Federal Reserve Bank of St. Louis*](https://research.stlouisfed.org/econ/mccracken/fred-databases/). We provide the data as a .rda file [`fred QD`](./fred_data/fred_QD.rda) with 30 columns of the *"Xraw.stat"* object referring to the different variables. This quarterly sample spans from 1965Q1 to 2019Q4. We deliberately exclude the Covid-19 period and focus exclusively on pre-pandemic data. The data is transformed to stationarity, following the suggestions of McCracken and Ng (2020). Table 1 in Sub-section 4.1 of the book chapter shows the set of variables included for different model sizes.
 
 ### Bayesian estimation. 
 For each model type, we specify an estimation grid over the full evaluation sample and the information sets. In terms of model specifications, we consider four conjugate and four non-conjugate VAR priors. Detailed information on how we estimate these different models is provided below. There are three main estimation/forecasting files: 
