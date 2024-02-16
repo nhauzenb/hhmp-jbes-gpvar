@@ -14,14 +14,12 @@ For the empirical application,  we use the macroeconomic uncertainty measure of 
 
 ### Estimation files: 
 
-1.) [`A simple univariate example with a GP regression`](!uni_GPreg.R): In Sub-section 2.2, we illustrate the GP regression by means of a simple univariate example. We model US GDP growth as a function of the first lag of a macroeconomic uncertainty measure for a sub-sample around the global financial crisis. This stylized example, highlights the role of the kernel and its hyperparameters crucially impacts the posterior estimates of the conditional mean function. The corresponding estimation file replicates Figure 1 of the paper. 
+**1.) [`A simple univariate example with a GP regression`](!uni_GPreg.R):** In Sub-section 2.2, we illustrate the GP regression by means of a simple univariate example. We model US GDP growth as a function of the first lag of a macroeconomic uncertainty measure for a sub-sample around the global financial crisis. This stylized example, highlights the role of the kernel and its hyperparameters crucially impacts the posterior estimates of the conditional mean function. The corresponding estimation file replicates Figure 1 of the paper. 
 
-2.) [`Conjugate GP-VAR with SV`](!GPVAR_main.R): Based on the single realization of the Basu & Bundick (2017, ECTA) DSGE model [`BB_realization`](./data/BB_realization.csv), this file allows to estimate a conjugate Gaussian process vector autoregression (GP-VAR) on an equation-by-equation basis. The conjugate GP-VAR can be estimated either with homoskedastic errors (*sv == "homo"*) or with stochastic volatility (*sv == "SV"*). The folder [`gpvar funcs`](./gpvar_funcs/) contains the MCMC samplers for the GP-VAR and a few auxiliary functions:
+**2.) Conjugate GP-VAR with SV:** Based on the single realization of the Basu & Bundick (2017, ECTA) DSGE model [`BB_realization`](./data/BB_realization.csv), the file [`GPVAR_eqbyeq`](!GPVAR_eqbyeq.R) allows to estimate a conjugate Gaussian process vector autoregression (GP-VAR) on an equation-by-equation basis. The conjugate GP-VAR can be estimated either with homoskedastic errors (*sv == "homo"*) or with stochastic volatility (*sv == "SV"*). In addition, the [`Conjugate GP-VAR with SV`](!GPVAR_girfs.R) collects the equation-by-equation wise estimates and allows to compute generalized impulse response functions (GIRFs). In addition, the folder [`gpvar funcs`](./gpvar_funcs/) contains the MCMC sampler for a GP regression and a C++ function to create a Gaussian Kernel:
 
-* [`Direct sampler for conjugate BVAR with classic symmetric Minnesota prior`](./bvar_funcs/conjVARstd_func.R) 
+* [`MCMC sampler for conjugate GP-VAR with SV`](./bvar_funcs/conjVARstd_func.R) 
 * [`Direct sampler for BVAR with an asymmetric conjugate Minnesota prior`](./bvar_funcs/conjVARasym_func.R)
-* [`Direct sampler for conjugate BVAR with a subspace shrinkage prior`](./bvar_funcs/conjVARsub_func.R)
-* [`Gibbs sampler for non-conjugate BVAR with global-local shrinkage priors`](./bvar_funcs/nconjVAR_func.R)
 
 
 Replication codes come without technical support of any kind.
