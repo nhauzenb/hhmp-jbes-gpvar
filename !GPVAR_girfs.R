@@ -26,7 +26,7 @@ library(readr)
 ###--------------------------------------------------------------------------###
 ###---------------------- Auxiliary functions -------------------------------###
 ###--------------------------------------------------------------------------###
-source(paste0(func.dir, "gp_eqbyeq_func_svimh_main.R"))  
+source(paste0(func.dir, "gp_eqbyeq_mcmc.R"))  
 sourceCpp(paste0(func.dir, "sqexp_kernel.cpp"))
 
 ###--------------------------------------------------------------------------###
@@ -49,7 +49,7 @@ girf.prds <- seq(5, 120, 1) # relevant for GIRFs
 N.girf    <- length(girf.prds)
 
 girf.setup <- list(
-  nsave     = 5000,
+  nsave     = 2500,
   shk.var   = "vxo",
   shk.sc    = shk.sc,
   no.shks   = no.shks,

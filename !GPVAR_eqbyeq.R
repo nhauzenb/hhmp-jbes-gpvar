@@ -29,7 +29,8 @@ library(readr)
 ###--------------------------------------------------------------------------###
 ###---------------------- Auxiliary functions -------------------------------###
 ###--------------------------------------------------------------------------###
-source(paste0(func.dir, "gp_eqbyeq_func_svimh_main.R"))  
+source(paste0(func.dir, "gp_eqbyeq_mcmc.R"))  
+sourceCpp(paste0(func.dir, "sqexp_kernel.cpp"))
 
 ###--------------------------------------------------------------------------###
 ###--------------------------------- Set-up ---------------------------------###
@@ -39,16 +40,16 @@ model.setup <-  list(
   stdz       = TRUE,  # Standardize data
   unc.ind    = "VXO", # Uncertainty indicator
   p          =  4  ,  # No. of lags
-  sv         = "SV",  # Stochastic volatility
+  sv         = "homo",  # Stochastic volatility
   hyper.grid =  list("h"= seq(0.1 , 10, length.out =  50) , "sig" = seq(0.5,5, length.out =  20)),
   h.sc       =  "med-heur",               # Median heuristic
   c          =  c("own" = 2, "other" = 2) # Shrinkage
 )
 
 mcmc.setup <-  list( # MCMC preliminaries
-  nsave = 5000,
-  nburn = 5000,
-  nthin = 2
+  nsave = 2500,
+  nburn = 2500,
+  nthin = 4
 ) 
 
 list2env(model.setup, .GlobalEnv)
@@ -154,19 +155,15 @@ return.obj <- gp_estim(nr = nr, Y = Y, X = X, Z = Z, nsave = nsave, nburn = nbur
   
 F.i.1 <- return.obj$F[,,1]
 F.i.2 <- return.obj$F[,,2]
-  
-sigma2.i <- return.obj$sigma2
-svpara.i <- return.obj$sv.para
-tau.i    <- return.obj$tau
-  
 A0.i <- return.obj$gamma[,] * (-1)
-  
+sigma2.i <- return.obj$sigma2
+
 h.i.own     <- return.obj$lambda[,"h.own"]
 h.i.other   <- return.obj$lambda[,"h.other"]
 sig.i.own   <- return.obj$lambda[,"sig.own"]
 sig.i.other <- return.obj$lambda[,"sig.other"]
 
-# storing only relevant inverse Kernels, requires less memory
+# Storing only relevant inverse Kernels, requires less memory
 Kn.inv.store <- list()
 temp.grid.own <- list("h"=unique(h.i.own),"sig"=unique(sig.i.own))
 temp.grid.other <- list("h"=unique(h.i.other),"sig"=unique(sig.i.other))
@@ -194,7 +191,7 @@ for(kk in 1:(length(temp.grid.other$sig))){
 }
   
   
-str.list = list(F.i.1 = F.i.1, F.i.2 = F.i.2, sigma2.i = sigma2.i, tau.i = tau.i, svpara.i = svpara.i, A0.i = A0.i, h.i.own = h.i.own, h.i.other = h.i.other, sig.i.own = sig.i.own, sig.i.other = sig.i.other,Kn.i.own.inv = Kn.i.own.inv, Kn.i.other.inv = Kn.i.other.inv, sc.own = sc.own, sc.other = sc.other)
+str.list = list(F.i.1 = F.i.1, F.i.2 = F.i.2, sigma2.i = sigma2.i, A0.i = A0.i, h.i.own = h.i.own, h.i.other = h.i.other, sig.i.own = sig.i.own, sig.i.other = sig.i.other,Kn.i.own.inv = Kn.i.own.inv, Kn.i.other.inv = Kn.i.other.inv, sc.own = sc.own, sc.other = sc.other)
 save(file = foldername, "str.list")
 }
 
