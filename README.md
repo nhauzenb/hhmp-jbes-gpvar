@@ -1,4 +1,4 @@
-### Code package for N. Hauzenberger, F. Huber, M. Marcellino & N. Petz (202x). Gaussian process vector autoregressions and macroeconomic uncertainty, *Journal of Business & Economic Statistics*, forthcoming.
+### Code package: N. Hauzenberger, F. Huber, M. Marcellino & N. Petz (202x). Gaussian process vector autoregressions and macroeconomic uncertainty, *Journal of Business & Economic Statistics*, forthcoming.
 
 **Publication (open access).** link following soon
 
@@ -16,7 +16,7 @@ For the empirical application,  we use the macroeconomic uncertainty measure of 
 
 **1.) [`A simple univariate example with a GP regression`](!uni_GPreg.R):** In Sub-section 2.2, we illustrate the GP regression by means of a simple univariate example. We model US GDP growth as a function of the first lag of a macroeconomic uncertainty measure for a sub-sample around the global financial crisis. This stylized example, highlights the role of the kernel and its hyperparameters crucially impacts the posterior estimates of the conditional mean function. The corresponding estimation file replicates Figure 1 of the paper. 
 
-**2.) Conjugate GP-VAR with SV:** Based on the single realization of the Basu & Bundick (2017, ECTA) DSGE model [`BB_realization`](./data/BB_realization.csv), the file [`GPVAR_eqbyeq`](!GPVAR_eqbyeq.R) allows to estimate a conjugate Gaussian process vector autoregression (GP-VAR) on an equation-by-equation basis. The conjugate GP-VAR can be estimated either with homoskedastic errors (*sv == "homo"*) or with stochastic volatility (*sv == "SV"*). In addition, the [`GPVAR_girfs`](!GPVAR_girfs.R) collects the equation-by-equation wise estimates and allows to compute generalized impulse response functions (GIRFs). In addition, the folder [`gpvar funcs`](./gpvar_funcs/) contains the MCMC sampler for a GP regression and a C++ function to create a squared exponential kernel:
+**2.) Conjugate GP-VAR with SV:** Based on the single realization of the Basu & Bundick (2017, ECTA) DSGE model [`BB_realization`](./data/BB_realization.csv), the file [`GPVAR_eqbyeq`](!GPVAR_eqbyeq.R) allows to estimate of a conjugate Gaussian process vector autoregression (GP-VAR) on an equation-by-equation basis. The conjugate GP-VAR can be estimated either with homoskedastic errors (*sv == "homo"*) or with stochastic volatility (*sv == "SV"*). The [`GPVAR_girfs`](!GPVAR_girfs.R) collects the equation-wise estimates and allows to compute generalized impulse response functions (GIRFs). In addition, the folder [`gpvar funcs`](./gpvar_funcs/) contains the MCMC sampler for a GP regression and a C++ function to create a squared exponential kernel:
 
 * [`MCMC sampler for conjugate GP-VAR with SV`](./gpvar_funcs/conjVARstd_func.R) 
 * [`Squared exponential kernel function`](./gpvar_funcs/sqexp_kernel.cpp)
