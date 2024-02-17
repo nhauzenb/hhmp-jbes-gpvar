@@ -10,7 +10,7 @@
 For the Monte Carlo exercise, we use the dynamic stochastic general equilibrium (DSGE) model proposed in [Basu & Bundick (2017, ECTA)](https://doi.org/10.3982/ECTA13960) to simulate time series of length T=120 and use these to back out the responses of the model economy to unexpected shocks in uncertainty. The uncertainty shock is identified by ordering the stock market volatility (our measure of uncertainty) first, implying an immediate reaction of all real economic quantities in the system following an uncertainty shock. We provide a single realization from the DGP as a .csv file [`BB_realization`](./data/BB_realization.csv).
 
 ### Data for the empirical application. 
-For the empirical application,  we use the macroeconomic uncertainty measure of [Jurado, Ludvigson, and Ng (2015, AER)](https://www.aeaweb.org/articles?id=10.1257/aer.20131193) provided (and regularly updated) on the [web page of Sydney C. Ludvigson](https://www.sydneyludvigson.com/macro-and-financial-uncertainty-indexes}{sydneyludvigson.com/macro-and-financial-uncertainty-indexes). For the different macroeconomic variables, we rely on the popular FRED-QD dataset provided by the *Federal Reserve Bank of St. Louis* and publicly available [here](https://research.stlouisfed.org/econ/mccracken/fred-databases/). Our quarterly sample spans from 1965Q1 to 2019Q4. Sub-section 4.2 in the paper and Table B.1 in the Online Appendix shows the set of variables included for different model sizes. We provide the data as a .rda file [`MacroUncQ`](./data/MacroUncQ.rda).
+For the empirical application,  we use the macroeconomic uncertainty measure of [Jurado, Ludvigson, and Ng (2015, AER)](https://www.aeaweb.org/articles?id=10.1257/aer.20131193) provided (and regularly updated) on the [web page of Sydney C. Ludvigson](https://www.sydneyludvigson.com/macro-and-financial-uncertainty-indexes). For the different macroeconomic variables, we rely on the popular FRED-QD dataset provided by the *Federal Reserve Bank of St. Louis* and publicly available [here](https://research.stlouisfed.org/econ/mccracken/fred-databases/). Our quarterly sample spans from 1965Q1 to 2019Q4. Sub-section 4.2 in the paper and Table B.1 in the Online Appendix shows the set of variables included for different model sizes. We provide the data as a .rda file [`MacroUncQ`](./data/MacroUncQ.rda).
 
 ### Estimation files: 
 
@@ -18,7 +18,7 @@ For the empirical application,  we use the macroeconomic uncertainty measure of 
 
 **2.) Conjugate GP-VAR with SV:** Based on the single realization of the Basu & Bundick (2017, ECTA) DSGE model [`BB_realization`](./data/BB_realization.csv), the file [`GPVAR_eqbyeq`](!GPVAR_eqbyeq.R) allows to estimate of a conjugate Gaussian process vector autoregression (GP-VAR) on an equation-by-equation basis. The [`GPVAR_girfs`](!GPVAR_girfs.R) collects the equation-wise estimates and allows to compute generalized impulse response functions (GIRFs). In addition, the folder [`gpvar funcs`](./gpvar_funcs/) contains the MCMC sampler for a GP regression and a C++ function to create a squared exponential kernel:
 
-* [`MCMC sampler for conjugate GP-VAR with SV`](./gpvar_funcs/conjVARstd_func.R) 
+* [`MCMC sampler for conjugate GP-VAR with SV`](./gpvar_funcs/gp_eqbyeq_mcmc.R) 
 * [`Squared exponential kernel function`](./gpvar_funcs/sqexp_kernel.cpp)
 
 
