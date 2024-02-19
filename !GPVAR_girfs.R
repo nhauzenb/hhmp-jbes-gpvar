@@ -222,8 +222,7 @@ A.draw <- A.store[gi,,]
 shk.tt.1 <- rnorm(MM, 0, sqrt(sigma2.store[gi,tt.pos,]))
 shk.tt.0 <- rnorm(MM, 0, sqrt(sigma2.store[gi,tt.pos,]))
 names(shk.tt.1) <- names(shk.tt.1) <- var.names
-shk.tt.1["vxo"] <- 0
-shk.tt.0[] <- shk.tt.1[] <- 0
+# shk.tt.0[] <- shk.tt.1[] <- 0
 
 # Unconditional forecast
 if(p == 1){
